@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-app-hello
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: k8s-app-hello
+  template:
+    metadata:
+      labels:
+        app: k8s-app-hello
+    spec:
+      containers:
+      - name: k8s-app-hello
+        image: sidpatel93/k8s-test:v2
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 3000
